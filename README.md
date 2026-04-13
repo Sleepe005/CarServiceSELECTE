@@ -1,10 +1,10 @@
 # CarServiceSELECTE
 
 ## Подключение к серверу
-### 1. Создать SSH ключ (интструкция для Linux/Max, Bash в Windows)
+### 1. Создать SSH ключ (инструкция для Linux/Mac, Bash в Windows)
 `ssh-keygen -t ed25519`
 
-На экране появится диалог с предложением выбрать путь для сохранения файлов:
+На экране появится сообщение с предложением выбрать путь для сохранения файлов:
 
 `Enter file in which to save the key (/home/user/.ssh/id_rsa):`
 
