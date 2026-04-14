@@ -1,16 +1,17 @@
-package com.example.demo.entity;
+package com.example.CarAPI_1.model;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import java.time.LocalDate;
 
 @Getter
-@Setter(onMethod_ = {@Setter(AccessLevel.PROTECTED)})
+@Setter(value = AccessLevel.PROTECTED)
 @NoArgsConstructor
 @Entity
-@Table(name = "Cars")
+@Table(name = "cars")
 public class Cars {
 
     @Id
@@ -84,12 +85,12 @@ public class Cars {
     @Column(name="last_updated", nullable = false)
     private java.time.LocalDate last_updated;
 
-    public Cars(Long brand, Long model, Long generation,
-                Long year_from, Long year_to, Long price, Long safety_rating,
+    public Cars(String brand, String model, String generation,
+                LocalDate year_from, LocalDate year_to, Long price, Long safety_rating,
                 Long reliability_rating, Long fuel_consumption, Long maintenance_cost,
                 Long comfort_rating, Long capacity_passengers, Long capacity_baggage, Long acceleration_0_100,
-                Long appearance_rating, Long body_type, Long fuel_type, Long transmission,
-                Long drivetrain, Long power_hp, Long additional_options, Long last_updated){
+                Long appearance_rating, String body_type, String fuel_type, String transmission,
+                String drivetrain, Long power_hp, String additional_options, LocalDate last_updated) {
         this.brand = brand;
         this.model = model;
         this.generation = generation;
