@@ -1,4 +1,4 @@
-package com.example.car_choice_backend.model;
+package com.example.CarAPI_1.model;
 
 import jakarta.persistence.*;
 import java.time.Instant;
