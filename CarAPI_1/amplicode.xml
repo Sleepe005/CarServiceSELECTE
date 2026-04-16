@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AmplicodePersistenceUnitSettings">
+    <persistence-units>
+      <persistence-unit moduleName="CarAPI_1" name="Default">
+        <packages>
+          <package value="com.example.CarAPI_1" />
+          <package value="com.example.CarAPI_1.model" />
+        </packages>
+      </persistence-unit>
+    </persistence-units>
+  </component>
+</project>
