@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-@Setter(value = AccessLevel.PROTECTED)
+@Setter
 @Entity
 @Table(name = "profile")
 public class Profile {
@@ -15,64 +15,48 @@ public class Profile {
     private Long id;
 
     @Column(name = "user_id", nullable = false)
-    private  Long user_id;
+    private  Long userId;
 
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "budget_max", nullable = false)
+    @Column(name = "budget_max", nullable = true)
     private Long budget_max;
 
     @Column(name = "usage_purpose", nullable = false)
-    private Integer usage_purpose;
+    private Integer usage_purpose = 1;
 
     @Column(name = "weight_price", nullable = false)
-    private Integer weight_price;
+    private Integer weight_price = 5;
 
     @Column(name = "weight_safety", nullable = false)
-    private Integer weight_safety;
+    private Integer weight_safety = 5;
 
     @Column(name = "weight_reliability", nullable = false)
-    private Integer weight_reliability;
+    private Integer weight_reliability = 5;
 
     @Column(name = "weight_economy", nullable = false)
-    private Integer weight_economy;
+    private Integer weight_economy = 5;
 
     @Column(name = "weight_comfort", nullable = false)
-    private Integer weight_comfort;
+    private Integer weight_comfort = 5;
 
     @Column(name = "weight_capacity", nullable = false)
-    private Integer weight_capacity;
+    private Integer weight_capacity = 5;
 
     @Column(name = "weight_dynamics", nullable = false)
-    private Integer weight_dynamics;
+    private Integer weight_dynamics = 5;
 
     @Column(name = "weight_appearance", nullable = false)
-    private Integer weight_appearance;
+    private Integer weight_appearance = 5;
 
     @Column(name = "weight_service_cost", nullable = false)
-    private Integer weight_service_cost;
+    private Integer weight_service_cost = 5;
 
     public Profile(){}
 
-    public Profile(Long id, Long user_id, String name, Long budget_max,
-                   Integer usage_purpose, Integer weight_price, Integer weight_safety,
-                   Integer weight_reliability, Integer weight_economy, Integer weight_comfort,
-                   Integer weight_capacity, Integer weight_dynamics, Integer weight_appearance,
-                   Integer weight_service_cost){
-        this.id = id;
-        this.user_id = user_id;
+    public Profile(Long user_id, String name){
+        this.userId = user_id;
         this.name = name;
-        this.budget_max = budget_max;
-        this.usage_purpose = usage_purpose;
-        this.weight_price = weight_price;
-        this.weight_safety = weight_safety;
-        this.weight_reliability = weight_reliability;
-        this.weight_economy = weight_economy;
-        this.weight_comfort = weight_comfort;
-        this.weight_capacity = weight_capacity;
-        this.weight_dynamics = weight_dynamics;
-        this.weight_appearance = weight_appearance;
-        this.weight_service_cost = weight_service_cost;
     }
 }

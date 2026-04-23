@@ -1,3 +1,5 @@
+
+
 -- Миграция V1: Создание таблицы users
 
 CREATE TABLE IF NOT EXISTS users (
