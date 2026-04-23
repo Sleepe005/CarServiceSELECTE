@@ -16,7 +16,7 @@ public class ProfileService {
 
     @Transactional
     public Profile saveProfile(Profile profile) {
-        Optional<Profile> existingProfile = profileRepository.findByUserId(profile.getUser_id());
+        Optional<Profile> existingProfile = profileRepository.findByUserId(profile.getUserId());
 
         if (existingProfile.isPresent()) {
             Profile existing = existingProfile.get();

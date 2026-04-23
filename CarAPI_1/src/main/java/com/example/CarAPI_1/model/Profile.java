@@ -15,7 +15,7 @@ public class Profile {
     private Long id;
 
     @Column(name = "user_id", nullable = false)
-    private  Long user_id;
+    private  Long userId;
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -61,7 +61,7 @@ public class Profile {
                    Integer weight_capacity, Integer weight_dynamics, Integer weight_appearance,
                    Integer weight_service_cost){
         this.id = id;
-        this.user_id = user_id;
+        this.userId = user_id;
         this.name = name;
         this.budget_max = budget_max;
         this.usage_purpose = usage_purpose;
