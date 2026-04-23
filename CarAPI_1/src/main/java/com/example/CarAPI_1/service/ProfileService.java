@@ -15,7 +15,7 @@ public class ProfileService {
     private final ProfileRepository profileRepository;
 
     @Transactional
-    public Profile saveProfile(Profile profile) {
+    public Profile saveOrUpdateProfile(Profile profile) {
         Optional<Profile> existingProfile = profileRepository.findByUserId(profile.getUserId());
 
         if (existingProfile.isPresent()) {
@@ -38,8 +38,9 @@ public class ProfileService {
         return profileRepository.save(profile);
     }
 
-    public Optional<Profile> getProfileByUserId(Long userId) {
-        return profileRepository.findByUserId(userId);
+    public Profile getProfileByUserId(Long userId) {
+
+        return profileRepository.findByUserId(userId).orElseThrow();
     }
 
     @Transactional
