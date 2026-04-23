@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-@Setter(value = AccessLevel.PROTECTED)
+@Setter
 @Entity
 @Table(name = "profile")
 public class Profile {
