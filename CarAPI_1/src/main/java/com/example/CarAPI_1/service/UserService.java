@@ -14,7 +14,7 @@ public class UserService {
     private final JwtService jwtService;
 
     public void registerUser(String email, String rawPassword, String fullName){
-        if(userRepository.existByEmail(email)){
+        if(userRepository.existsByEmail(email)){
             throw new RuntimeException("User already exists");
         }
 
