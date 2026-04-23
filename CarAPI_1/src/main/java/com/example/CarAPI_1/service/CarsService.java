@@ -1,7 +1,7 @@
-package com.example.demo.service;
+package com.example.CarAPI_1.service;
 
-import com.example.demo.entity.Cars;
-import com.example.demo.repository.CarRepository;
+import com.example.CarAPI_1.model.Cars;
+import com.example.CarAPI_1.repository.CarRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
