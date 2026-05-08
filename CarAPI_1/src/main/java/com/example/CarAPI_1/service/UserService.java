@@ -19,14 +19,17 @@ public class UserService {
     @Transactional
     public void registerUser(String email, String rawPassword, String fullName){
         if(userRepository.existsByEmail(email)){
+//            return false;
             throw new RuntimeException("User already exists");
         }
 
         String hashPassword = passwordEncoder.encode(rawPassword);
         User user = new User(email, hashPassword, fullName);
+
+
         userRepository.save(user);
 
-        profileService.saveOrUpdateProfile(new Profile(user.getId(), user.getFullName()));
+        profileService.saveOrUpdateProfile(user, new Profile(fullName));
     }
 
     public String authenticate(String email, String rawPassword){

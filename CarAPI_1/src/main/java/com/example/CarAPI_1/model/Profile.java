@@ -14,14 +14,16 @@ public class Profile {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "user_id", nullable = false)
-    private  Long userId;
+//    @Column(name = "user_id", nullable = false)
+    @OneToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
 
     @Column(name = "name", nullable = false)
     private String name;
 
     @Column(name = "budget_max", nullable = true)
-    private Long budget_max;
+    private Integer budget_max = 0;
 
     @Column(name = "usage_purpose", nullable = false)
     private Integer usage_purpose = 1;
@@ -55,8 +57,7 @@ public class Profile {
 
     public Profile(){}
 
-    public Profile(Long user_id, String name){
-        this.userId = user_id;
+    public Profile(String name){
         this.name = name;
     }
 }

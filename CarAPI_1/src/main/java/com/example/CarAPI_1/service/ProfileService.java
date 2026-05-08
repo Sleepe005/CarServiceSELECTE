@@ -1,7 +1,9 @@
 package com.example.CarAPI_1.service;
 
 import com.example.CarAPI_1.model.Profile;
+import com.example.CarAPI_1.model.User;
 import com.example.CarAPI_1.repository.ProfileRepository;
+import com.example.CarAPI_1.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,28 +16,34 @@ public class ProfileService {
 
     private final ProfileRepository profileRepository;
 
-    @Transactional
-    public Profile saveOrUpdateProfile(Profile profile) {
-        Optional<Profile> existingProfile = profileRepository.findByUserId(profile.getUserId());
+    private final UserRepository userRepository;
 
-        if (existingProfile.isPresent()) {
-            Profile existing = existingProfile.get();
-            existing.setName(profile.getName());
-            existing.setBudget_max(profile.getBudget_max());
-            existing.setUsage_purpose(profile.getUsage_purpose());
-            existing.setWeight_price(profile.getWeight_price());
-            existing.setWeight_safety(profile.getWeight_safety());
-            existing.setWeight_reliability(profile.getWeight_reliability());
-            existing.setWeight_economy(profile.getWeight_economy());
-            existing.setWeight_comfort(profile.getWeight_comfort());
-            existing.setWeight_capacity(profile.getWeight_capacity());
-            existing.setWeight_dynamics(profile.getWeight_dynamics());
-            existing.setWeight_appearance(profile.getWeight_appearance());
-            existing.setWeight_service_cost(profile.getWeight_service_cost());
+    @Transactional
+    public Profile saveOrUpdateProfile(User user, Profile newProfile){
+        if(user.getProfile() != null){
+//            Обновляем существующий профиль
+            Profile existing = user.getProfile();
+            existing.setName(newProfile.getName());
+            existing.setBudget_max(newProfile.getBudget_max());
+            existing.setUsage_purpose(newProfile.getUsage_purpose());
+            existing.setWeight_price(newProfile.getWeight_price());
+            existing.setWeight_safety(newProfile.getWeight_safety());
+            existing.setWeight_reliability(newProfile.getWeight_reliability());
+            existing.setWeight_economy(newProfile.getWeight_economy());
+            existing.setWeight_comfort(newProfile.getWeight_comfort());
+            existing.setWeight_capacity(newProfile.getWeight_capacity());
+            existing.setWeight_dynamics(newProfile.getWeight_dynamics());
+            existing.setWeight_appearance(newProfile.getWeight_appearance());
+            existing.setWeight_service_cost(newProfile.getWeight_service_cost());
+
             return profileRepository.save(existing);
         }
 
-        return profileRepository.save(profile);
+//        Создаём новый профиль и связываем с пользователем
+        user.setProfile(newProfile);
+        newProfile.setUser(user);
+
+        return profileRepository.save(newProfile);
     }
 
     public Profile getProfileByUserId(Long userId) {
