@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS car_model (
     model VARCHAR(255) NOT NULL,
     generation VARCHAR(255) NOT NULL,
     year_from DATE NOT NULL,
-    year_to DATE NOT NULL,
+    year_to DATE,
     price BIGINT NOT NULL,
     body_type VARCHAR(100) NOT NULL,
     fuel_type VARCHAR(100) NOT NULL,
