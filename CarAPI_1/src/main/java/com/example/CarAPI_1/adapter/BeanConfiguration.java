@@ -20,7 +20,9 @@ public class BeanConfiguration {
     }
 
     @Bean
-    public UserService userService(PasswordEncoderPort passwordEncoderPort, UserPort userPort, TokenPort tokenPort, ProfileService profileService) {
-        return new UserService(passwordEncoderPort, userPort, tokenPort, profileService);
+    public UserService userService(PasswordEncoderPort passwordEncoderPort, UserPort userPort,
+                                   TokenPort tokenPort, ProfileService profileService,
+                                   ProfilePort profilePort) {
+        return new UserService(passwordEncoderPort, userPort, tokenPort, profileService, profilePort);
     }
 }

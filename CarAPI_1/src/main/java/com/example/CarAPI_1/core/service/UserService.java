@@ -3,6 +3,7 @@ package com.example.CarAPI_1.core.service;
 import com.example.CarAPI_1.core.entity.ProfileEntity;
 import com.example.CarAPI_1.core.entity.UserEntity;
 import com.example.CarAPI_1.core.port.PasswordEncoderPort;
+import com.example.CarAPI_1.core.port.ProfilePort;
 import com.example.CarAPI_1.core.port.TokenPort;
 import com.example.CarAPI_1.core.port.UserPort;
 
@@ -11,12 +12,15 @@ public class UserService {
     private final UserPort userPort;
     private final TokenPort tokenPort;
     private final ProfileService profileService;
+    private final ProfilePort profilePort;
 
-    public UserService(PasswordEncoderPort passwordEncoderPort, UserPort userPort, TokenPort tokenPort, ProfileService profileService) {
+    public UserService(PasswordEncoderPort passwordEncoderPort, UserPort userPort, TokenPort tokenPort,
+                       ProfileService profileService, ProfilePort profilePort) {
         this.passwordEncoderPort = passwordEncoderPort;
         this.userPort = userPort;
         this.tokenPort = tokenPort;
         this.profileService = profileService;
+        this.profilePort = profilePort;
     }
 
     public void registerUser(String email, String rawPassword, String fullName){
@@ -25,11 +29,14 @@ public class UserService {
         }
 
         String hashPassword = passwordEncoderPort.encode(rawPassword);
+
         UserEntity user = new UserEntity(email, hashPassword, fullName);
+        ProfileEntity profile = new ProfileEntity(fullName, user);
+//        profile.setUser(user);
+        user.setProfile(profile);
 
         userPort.save(user);
-
-        profileService.saveOrUpdateProfile(user, new ProfileEntity(fullName));
+//        profilePort.save(profile);
     }
 
     public String authenticate(String email, String rawPassword){

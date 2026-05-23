@@ -15,35 +15,34 @@ public class ProfileService {
         this.userPort = userPort;
     }
 
-    public void saveOrUpdateProfile(UserEntity user, ProfileEntity newProfileModel){
-        if(user.getProfile() != null){
-//            Обновляем существующий профиль
-            ProfileEntity existing = user.getProfile();
-            existing.setName(newProfileModel.getName());
-            existing.setBudgetMax(newProfileModel.getBudgetMax());
-            existing.setUsagePurpose(newProfileModel.getUsagePurpose());
-            existing.setWeightPrice(newProfileModel.getWeightPrice());
-            existing.setWeightSafety(newProfileModel.getWeightSafety());
-            existing.setWeightReliability(newProfileModel.getWeightReliability());
-            existing.setWeightEconomy(newProfileModel.getWeightEconomy());
-            existing.setWeightComfort(newProfileModel.getWeightComfort());
-            existing.setWeightCapacity(newProfileModel.getWeightCapacity());
-            existing.setWeightDynamics(newProfileModel.getWeightDynamics());
-            existing.setWeightAppearance(newProfileModel.getWeightAppearance());
-            existing.setWeightServiceCost(newProfileModel.getWeightServiceCost());
+    public void saveOrUpdateProfile(UserEntity user, ProfileEntity newProfileData) {
+        if (profilePort.existByUserId(user.getId())) {
+            // UPDATE — загружаем существующий и обновляем
+            ProfileEntity existing = profilePort.findByUserId(user.getId())
+                    .orElseThrow(() -> new RuntimeException("Profile not found"));
+
+            existing.setName(newProfileData.getName());
+            existing.setBudgetMax(newProfileData.getBudgetMax());
+            existing.setUsagePurpose(newProfileData.getUsagePurpose());
+            existing.setWeightPrice(newProfileData.getWeightPrice());
+            existing.setWeightSafety(newProfileData.getWeightSafety());
+            existing.setWeightReliability(newProfileData.getWeightReliability());
+            existing.setWeightEconomy(newProfileData.getWeightEconomy());
+            existing.setWeightComfort(newProfileData.getWeightComfort());
+            existing.setWeightCapacity(newProfileData.getWeightCapacity());
+            existing.setWeightDynamics(newProfileData.getWeightDynamics());
+            existing.setWeightAppearance(newProfileData.getWeightAppearance());
+            existing.setWeightServiceCost(newProfileData.getWeightServiceCost());
 
             profilePort.save(existing);
+        } else {
+            // INSERT — новый профиль
+            newProfileData.setUser(user);
+            profilePort.save(newProfileData);
         }
-
-//        Создаём новый профиль и связываем с пользователем
-        user.setProfile(newProfileModel);
-        newProfileModel.setUser(user);
-
-        profilePort.save(newProfileModel);
     }
 
     public ProfileEntity getProfileByUserId(Long userId) {
-
         return profilePort.findByUserId(userId).orElseThrow();
     }
 
