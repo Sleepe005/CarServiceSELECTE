@@ -2,7 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import ProfileView from '../views/ProfileView.vue'
-import CarsView from '../views/CarsView.vue' // ← добавить
+import CarsView from '../views/CarsView.vue'
+import RecommendationsView from '../views/RecommendationsView.vue'
 
 const routes = [
   {
@@ -29,6 +30,12 @@ const routes = [
     path: '/cars', // ← добавить
     name: 'cars',
     component: CarsView,
+    meta: { requiresAuth: true },
+  },
+  {
+    path: '/recommendations',
+    name: 'recommendations',
+    component: RecommendationsView,
     meta: { requiresAuth: true },
   },
 ]

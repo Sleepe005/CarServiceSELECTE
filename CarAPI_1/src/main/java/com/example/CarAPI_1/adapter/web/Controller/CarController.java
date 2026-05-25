@@ -82,4 +82,12 @@ public class CarController {
 
         return ResponseEntity.ok(result);
     }
+
+    @GetMapping("/getCar")
+    @SecurityRequirement(name = "Bearer")
+    public ResponseEntity<CarResponseDTO> getCar(@Parameter(hidden = true) Authentication authentication, Long carId){
+        CarModel car = carRepository.findById(carId)
+                .orElseThrow(() -> new RuntimeException("Car not found"));
+        return ResponseEntity.ok(new CarResponseDTO(car));
+    }
 }

@@ -3,6 +3,7 @@
     <el-menu mode="horizontal" router class="nav-menu">
       <el-menu-item index="/profile">Мой профиль</el-menu-item>
       <el-menu-item index="/cars">Каталог авто</el-menu-item>
+      <el-menu-item index="/recommendations">Рекомендации 🚀</el-menu-item>
       <el-menu-item @click="handleLogout" style="float: right">Выйти</el-menu-item>
     </el-menu>
 

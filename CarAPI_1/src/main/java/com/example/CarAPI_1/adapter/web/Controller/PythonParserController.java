@@ -30,4 +30,21 @@ public class PythonParserController {
         response.put("message", "Парсинг запущен в фоновом режиме. Смотри логи.");
         return ResponseEntity.ok(response);
     }
+
+    @PostMapping("/import")
+    @SecurityRequirement(name = "Bearer")
+    public ResponseEntity<Map<String, Object>> importCars() {
+//        log.info("📥 Запрос на импорт автомобилей из JSON");
+
+        int importedCount = carApiPort.importCarsFromJson();
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("success", importedCount > 0);
+        response.put("importedCount", importedCount);
+        response.put("message", importedCount > 0
+                ? "Успешно импортировано " + importedCount + " автомобилей"
+                : "Не удалось импортировать автомобили");
+
+        return ResponseEntity.ok(response);
+    }
 }

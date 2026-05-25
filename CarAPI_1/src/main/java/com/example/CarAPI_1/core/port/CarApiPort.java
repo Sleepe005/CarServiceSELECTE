@@ -4,4 +4,5 @@ import java.util.List;
 
 public interface CarApiPort {
     List<CarEntity> loadCars();  // Загружает машины из внешнего источника
+    int importCarsFromJson();
 }
