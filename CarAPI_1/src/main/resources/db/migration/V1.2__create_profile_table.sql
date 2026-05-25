@@ -14,15 +14,16 @@ CREATE TABLE IF NOT EXISTS profile (
     weight_dynamics INTEGER NOT NULL DEFAULT 5,
     weight_appearance INTEGER NOT NULL DEFAULT 5,
     weight_service_cost INTEGER NOT NULL DEFAULT 5,
+    weight_features INTEGER NOT NULL DEFAULT 5,
     CONSTRAINT pk_profile PRIMARY KEY (id)
 );
 
--- Внешний ключ к users
-ALTER TABLE profile ADD CONSTRAINT fk_profile_user
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE;
-
--- У пользователя может быть только один профиль
-ALTER TABLE profile ADD CONSTRAINT uc_profile_user UNIQUE (user_id);
-
--- Индекс для поиска по user_id
-CREATE INDEX idx_profile_user_id ON profile(user_id);
+-- -- Внешний ключ к users
+-- ALTER TABLE profile ADD CONSTRAINT fk_profile_user
+--     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE;
+--
+-- -- У пользователя может быть только один профиль
+-- ALTER TABLE profile ADD CONSTRAINT uc_profile_user UNIQUE (user_id);
+--
+-- -- Индекс для поиска по user_id
+-- CREATE INDEX idx_profile_user_id ON profile(user_id);

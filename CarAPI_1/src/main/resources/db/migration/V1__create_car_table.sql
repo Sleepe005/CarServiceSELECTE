@@ -23,8 +23,8 @@ CREATE TABLE IF NOT EXISTS car_model (
     CONSTRAINT pk_car_model PRIMARY KEY (id)
 );
 
--- Индексы для быстрого поиска
-CREATE INDEX idx_car_model_brand ON car_model(brand);
-CREATE INDEX idx_car_model_price ON car_model(price);
-CREATE INDEX idx_car_model_body_type ON car_model(body_type);
-CREATE INDEX idx_car_model_fuel_type ON car_model(fuel_type);
+-- -- Индексы для быстрого поиска
+-- CREATE INDEX idx_car_model_brand ON car_model(brand);
+-- CREATE INDEX idx_car_model_price ON car_model(price);
+-- CREATE INDEX idx_car_model_body_type ON car_model(body_type);
+-- CREATE INDEX idx_car_model_fuel_type ON car_model(fuel_type);

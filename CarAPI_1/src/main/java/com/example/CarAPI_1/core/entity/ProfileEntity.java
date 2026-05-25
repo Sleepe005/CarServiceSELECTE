@@ -15,6 +15,7 @@ public class ProfileEntity {
     private Integer weightDynamics = 5;
     private Integer weightAppearance = 5;
     private Integer weightServiceCost = 5;
+    private Integer weightFeatures = 5;
 
     public ProfileEntity() {
     }
@@ -160,5 +161,11 @@ public class ProfileEntity {
 
     public void setWeightServiceCost(Integer weightServiceCost) {
         this.weightServiceCost = weightServiceCost;
+    }
+
+    public Integer getWeightFeatures() { return weightFeatures; }
+
+    public void getWeightFeatures(Integer weightFeatures) {
+        this.weightFeatures = weightFeatures;
     }
 }

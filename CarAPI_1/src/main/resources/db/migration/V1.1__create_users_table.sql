@@ -8,8 +8,8 @@ CREATE TABLE IF NOT EXISTS users (
     CONSTRAINT pk_users PRIMARY KEY (id)
 );
 
--- Уникальный email
-ALTER TABLE users ADD CONSTRAINT uc_users_email UNIQUE (email);
-
--- Индекс для поиска по email
-CREATE INDEX idx_users_email ON users(email);
+-- -- Уникальный email
+-- ALTER TABLE users ADD CONSTRAINT uc_users_email UNIQUE (email);
+--
+-- -- Индекс для поиска по email
+-- CREATE INDEX idx_users_email ON users(email);
